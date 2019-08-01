@@ -5,13 +5,16 @@ class Bird {
     this.gravity = 0.5;
     this.lift = -12;
     this.velocity = 0;
+
     this.show = () => {
       fill(255, 0, 0);
       ellipse(this.x, this.y, 32, 32);
     };
+
     this.up = () => {
       this.velocity += this.lift;
     };
+    
     this.update = () => {
       this.velocity += this.gravity;
       // this.velocity *= 0.9;

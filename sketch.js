@@ -16,13 +16,13 @@ function setup () {
 function draw () {
   background(0);
 
-  function show () {
+  show = () => {
     const scoreString = 'Your score: ' + score;
     text(scoreString, 30, 20, 55, 55);
     textSize(15);
     // rect(30, 20, 55, 55);
     // fill(255);
-  }
+  };
 
   if (frameCount === 1) {
     pipes.push(new Pipe());
