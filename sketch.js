@@ -22,6 +22,7 @@ function draw() {
   show = () => {
     const scoreString = 'Your score: ' + score;
     fill('#1199FF');
+    textStyle(BOLD);
     text(scoreString, 30, 20, 55, 55);
     textSize(15);
     // rect(30, 20, 55, 55);
