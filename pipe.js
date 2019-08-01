@@ -8,6 +8,15 @@ class Pipe {
     this.w = 40;
     this.speed = 5;
     this.highlight = false;
+    
+    this.passes = (bird) => {
+        if (bird.y > this.top || bird.y < height - this.bottom) {
+            if (bird.x > this.x && bird.x < this.x + this.w) {
+                return true;
+            }
+        }
+    }   
+    
 
     this.hits = (bird) => {
       if (bird.y < this.top || bird.y > height - this.bottom) {
