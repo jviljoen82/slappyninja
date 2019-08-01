@@ -47,9 +47,7 @@ function draw() {
 
     if (pipes[0].passes(bird)) {
         score += 5;
-    }
-    
-    if (pipes[i].hits(bird)) {
+    } else if (pipes[i].hits(bird)) {
         lives -= 1;
         //setup(bird);
         bird = new Bird();
