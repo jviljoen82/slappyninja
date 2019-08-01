@@ -1,7 +1,7 @@
-var bird;
-var pipes = [];
-var lives = 3;
-var score = 0;
+let bird;
+let pipes = [];
+let lives = 3;
+let score = 0;
 //var fr = 60;
 
 console.log(lives);
@@ -29,51 +29,50 @@ function draw() {
     // fill(255);
   };
 
-    if (frameCount === 1) {
-      pipes.push(new Pipe());
+  if (frameCount === 1) {
+    pipes.push(new Pipe());
+  }
+
+  if (frameCount % 100 === 0) {
+    pipes.push(new Pipe());
+  }
+
+  for (let i = pipes.length - 1; i >= 0; i--) {
+    pipes[i].show();
+    pipes[i].update();
+
+    if (pipes[i].offscreen()) {
+        pipes.splice(i, 1);
     }
 
-    if (frameCount % 100 === 0) {
-      pipes.push(new Pipe());
+    if (pipes[0].passes(bird)) {
+        score += 5;
+    } else if (pipes[i].hits(bird)) {
+        lives -= 1;
+        //setup(bird);
+        bird = new Bird();
+        if (lives > 1) {
+            alert('You Lose 1 life!  You have ' + lives + ' lives left');
+        } else if (lives === 1) {
+            alert('You Lose 1 life!  You have ' + lives + ' life left');
+        } else {
+            let answer = prompt('Game Over! Your score is ' + score + '! Do you want to play again?');
+            if (answer.toUpperCase().trim() === 'YES') {
+              reset();
+            } else {
+              reinitializeVars();
+              alert('Thanks for Playing!');
+              noLoop();
+            }
+        }
+        // if (lives == 0) {
+        // }
     }
+  }
 
-    for (var i = pipes.length - 1; i >= 0; i--) {
-      pipes[i].show();
-      pipes[i].update();
-
-      if (pipes[i].offscreen()) {
-          pipes.splice(i, 1);
-      }
-
-      if (pipes[i].passes(bird)) {
-          score += 1;
-      }
-
-      if (pipes[i].hits(bird)) {
-          lives -= 1;
-          //setup(bird);
-          bird = new Bird();
-          if (lives > 1) {
-              alert('You Lose 1 life!  You have ' + lives + ' lives left');
-          } else if (lives === 1) {
-              alert('You Lose 1 life!  You have ' + lives + ' life left');
-          } else {
-              let answer = prompt('Game Over! Your score is ' + score + '! Do you want to play again?');
-              if (answer.toUpperCase().trim() === 'YES') {
-                reset();
-              } else {
-                reinitializeVars();
-                alert('Thanks for Playing!');
-              }
-          }
-          // if (lives == 0) {
-          // }
-      }
-    }
-
-    show();
-    bird.show();
-    bird.update();
+  show();
+  bird.show();
+  bird.update();
 }
 
 function keyPressed() {
