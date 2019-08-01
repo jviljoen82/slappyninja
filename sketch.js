@@ -19,19 +19,19 @@ function draw() {
     debugger;
     background(0);
 
-    function show() {
-        var score_string = 'Your score: ' + score;
-        text(score_string, 30, 20, 55, 55);
-        textSize(15);
-        // rect(30, 20, 55, 55);
-        // fill(255);
-    }
+  show = () => {
+    const scoreString = 'Your score: ' + score;
+    text(scoreString, 30, 20, 55, 55);
+    textSize(15);
+    // rect(30, 20, 55, 55);
+    // fill(255);
+  };
 
-    if (frameCount == 1) {
+    if (frameCount === 1) {
         pipes.push(new Pipe());
     }
 
-    if (frameCount % 100 == 0) {
+    if (frameCount % 100 === 0) {
         pipes.push(new Pipe());
     }
 
@@ -53,7 +53,7 @@ function draw() {
             bird = new Bird();
             if (lives > 1) {
                 alert('You Lose 1 life!  You have ' + lives + ' lives left');
-            } else if (lives == 1) {
+            } else if (lives === 1) {
                 alert('You Lose 1 life!  You have ' + lives + ' life left');
             } else {
                 let answer = prompt('Game Over! Your score is ' + score + '! Do you want to play again?');
@@ -75,7 +75,7 @@ function draw() {
 }
 
 function keyPressed() {
-    if (key == ' ') {
+    if (key === ' ') {
         bird.up();
         score += 1;
         //console.log(score);
