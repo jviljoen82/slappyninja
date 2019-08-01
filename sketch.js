@@ -63,7 +63,7 @@ function draw() {
                 reset();
               } else {
                 reinitializeVars();
-                alert('Thanks for Playing!')
+                alert('Thanks for Playing!');
               }
           }
           // if (lives == 0) {
