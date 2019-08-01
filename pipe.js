@@ -10,12 +10,12 @@ class Pipe {
     this.highlight = false;
     
     this.passes = (bird) => {
-        if (bird.y > this.top || bird.y < height - this.bottom) {
-            if (bird.x > this.x && bird.x < this.x + this.w) {
-                return true;
-            }
+      if (bird.y > this.top || bird.y < height - this.bottom) {
+        if (bird.x > this.x && bird.x < this.x + this.w) {
+          return true;
         }
-    }   
+      }
+    };   
     
 
     this.hits = (bird) => {
@@ -41,7 +41,7 @@ class Pipe {
     this.update = () => {
       this.x -= this.speed;
     };
-    
+
     this.offscreen = () => {
       if (this.x < -this.w) {
         return true;
