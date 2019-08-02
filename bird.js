@@ -17,7 +17,6 @@ class Bird {
     
     this.update = () => {
       this.velocity += this.gravity;
-      // this.velocity *= 0.9;
       this.y += this.velocity;
       if (this.y > height) {
         this.y = height;
