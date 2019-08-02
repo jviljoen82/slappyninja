@@ -33,7 +33,7 @@ function draw() {
         pipes.splice(i, 1);
     }
 
-    if (pipes[0].passes(bird)) {
+    if (pipes[i].passes(bird)) {
       score += 5;
     } else if (pipes[i].hits(bird)) {
       lives -= 1;
