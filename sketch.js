@@ -16,6 +16,7 @@ function setup() {
 
 function draw() {
   background(0);
+  
 
   if (frameCount === 1) {
     pipes.push(new Pipe());
@@ -28,6 +29,7 @@ function draw() {
   for (let i = pipes.length - 1; i >= 0; i--) {
     pipes[i].show();
     pipes[i].update();
+    pipes.speed = 5;
 
     if (pipes[i].offscreen()) {
         pipes.splice(i, 1);
@@ -62,8 +64,15 @@ function draw() {
 
 function keyPressed() {
   if (key === ' ') {
-      bird.up();
+    bird.up();
+  } else if (keyCode === LEFT_ARROW) {
+    pipes.speed = 1;
+
+  } else if (keyCode === RIGHT_ARROW) {
+    pipes.speed = 25;
+    // TODO: add 'slap' code here
   }
+  return false;
 }
 
 function showScore() {
