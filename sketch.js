@@ -2,6 +2,7 @@ let bird;
 let pipes = [];
 let lives = 3;
 let score = 0;
+let leaders = [];
 
 console.log(lives);
 
@@ -49,9 +50,16 @@ function draw() {
         if (answer.toUpperCase().trim() === 'YES') {
           reset();
         } else {
-          reinitializeVars();
-          alert('Thanks for Playing!');
-          noLoop();
+            let answer = prompt('Game Over! Your score is ' + score + '! Do you want to play again?');
+            if (answer.toUpperCase().trim() === 'YES') {
+              reset();
+            } else {
+              leaders.push(prompt('Thanks for Playing! Enter yout name: '));
+              leaders.push(score);
+              console.log(leaders);
+              reinitializeVars();
+              noLoop();
+            }
         }
       }
     }
