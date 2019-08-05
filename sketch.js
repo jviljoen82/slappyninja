@@ -12,18 +12,18 @@ console.log(lives);
 
 function setup() {
   	createCanvas(1000, 600);
-    bg2 = loadImage('trees2.jpg')
+    bg2 = loadImage('media/backdrops/trees2.jpg')
     bg = loadImage('media/backdrops/trees.jpg');
     ninja = loadImage('media/ninja/ninja.png');
-	  pipes = [];
-	  bird = new Bird();
+  	pipes = [];
+  	bird = new Bird();
 }
 
 function draw() {
     if (!play) {
-      showTopScore();
+      	showTopScore();
     } else {
-      playGame();
+      	playGame();
     }
 }
 
