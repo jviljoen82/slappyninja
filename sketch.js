@@ -9,6 +9,7 @@ console.log(lives);
 
 function setup() {
   	createCanvas(1000, 600);
+    bg = loadImage('trees.jpg');
 	pipes = [];
 	bird = new Bird();
 }
@@ -22,7 +23,7 @@ function draw() {
 }
 
 function playGame() {
-	background(0);
+	background(bg);
     showScore();
 
 
