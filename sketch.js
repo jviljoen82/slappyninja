@@ -1,12 +1,12 @@
-let bird;
-let pipes = [];
-let lives = 3;
-let score = 0;
-let leaders = [];
-let play = false;
-let pipeCount = 0;
 let bg;
+let bird;
+let leaders = [];
+let lives = 3;
+let pipeCount = 0;
+let pipes = [];
+let play = false;
 let ninja;
+let score = 0;
 
 console.log(lives);
 
@@ -45,11 +45,12 @@ function playGame() {
 		pipes.push(new Pipe());
 	}
 
+    showScore();
+
 	for (let i = pipes.length - 1; i >= 0; i--) {
 		pipes[i].show();
 		pipes[i].update();
 		pipes.speed = 5;
-		showScore();
 
 		if (pipes[i].offscreen()) {
 			pipes.splice(i, 1);
@@ -58,7 +59,11 @@ function playGame() {
 		if (pipes[i].passes(bird)) {
             score += 5;
             pipeCount += 1;
-            console.log(pipeCount);
+            let r = /[0-9][0][0]/;
+
+            if (r.test(score)) {
+                lives +=1;
+            }
 		} else if (pipes[i].hits(bird)) {
 			lives -= 1;
 			bird = new Bird();
