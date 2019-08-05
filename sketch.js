@@ -56,14 +56,14 @@ function playGame() {
 		} else {
 			let answer = prompt('Game Over! Your score is ' + score + '! Do you want to play again?');
 			if (answer.toUpperCase().trim() === 'YES') {
-			reset();
+				reset();
 			} else {
-			let playerName = prompt('Thanks for Playing! Enter yout name: ');
-			leaders.push(playerName);
-			leaders.push(score);
-			console.log(leaders);
-			reinitializeVars();
-			play = false;
+				let playerName = prompt('Thanks for Playing! Enter yout name: ');
+				leaders.push(playerName);
+				leaders.push(score);
+				console.log(leaders);
+				reinitializeVars();
+				play = false;
 			}
 		}
 		}
@@ -77,6 +77,7 @@ function keyPressed() {
 	if (key === ' ') {
 		bird.up();
 	} else if (key.toUpperCase() === 'P') {
+		reset();
 		play = true;
 	} else if (keyCode === LEFT_ARROW) {
 		pipes.speed = 1;
@@ -97,23 +98,23 @@ function showScore() {
 }
 
 function showTopScore() {
-  let dislpayLeaders = leaders[0] + ": " + leaders[1];
-  let step = frameCount % 50;
+	let dislpayLeaders = leaders[0] + ": " + leaders[1];
+	let step = frameCount % 50;
 
-  if (leaders.length == 0) {
-      dislpayLeaders = "Can you make it onto the board?"
-  }
- // applyMatrix(1, 0, 0, 1, 40 + step, 50);
-  background(0);
-  fill('#1199FF');
-  textAlign(CENTER, TOP);
-  textStyle(BOLD);
-  text(dislpayLeaders, 20, 20, 990, 560);
-  textSize(20);
-  fill('#881144');
-  textAlign(CENTER, TOP);
-  text('press "P" to play', 20, 570, 990, 590);
-	// TODO: build top score page
+	if (leaders.length == 0) {
+		dislpayLeaders = "Can you make it onto the board?";
+	}
+	// applyMatrix(1, 0, 0, 1, 40 + step, 50);
+	background(0);
+	fill('#1199FF');
+	textAlign(CENTER, TOP);
+	textStyle(BOLD);
+	text(dislpayLeaders, 20, 20, 990, 560);
+	textSize(20);
+	fill('#881144');
+	textAlign(CENTER, TOP);
+	text('press "P" to play', 20, 570, 990, 590);
+		// TODO: build top score page
 }
 
 function reset() {
