@@ -11,8 +11,8 @@ console.log(lives);
 
 function setup() {
   	createCanvas(1000, 600);
-    bg = loadImage('trees.jpg');
-    ninja = loadImage("ninja.png");
+    bg = loadImage('media/backdrops/trees.jpg');
+    ninja = loadImage('media/ninja/ninja.png');
 	pipes = [];
 	bird = new Bird();
 }
@@ -27,8 +27,6 @@ function draw() {
 
 function playGame() {
 	background(bg);
-    showScore();
-
 
 	if (frameCount === 1) {
 		pipes.push(new Pipe());
@@ -42,7 +40,7 @@ function playGame() {
 		pipes[i].show();
 		pipes[i].update();
 		pipes.speed = 5;
-
+		showScore();
 
 		if (pipes[i].offscreen()) {
 			pipes.splice(i, 1);
