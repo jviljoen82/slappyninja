@@ -4,12 +4,14 @@ let lives = 3;
 let score = 0;
 let leaders = [];
 let play = false;
+let pipeCount = 0;
 
 console.log(lives);
 
 function setup() {
   	createCanvas(1000, 600);
     bg = loadImage('trees.jpg');
+    bg2 = loadImage('trees2.jpg')
     ninja = loadImage("ninja.png");
 	pipes = [];
 	bird = new Bird();
@@ -24,7 +26,16 @@ function draw() {
 }
 
 function playGame() {
-	background(bg);
+    // TODO: reset loop and change back to bg for now. 
+    if (pipeCount <= 5) {
+        background(bg);
+    } else if (pipeCount >= 6) {
+        background(bg2);
+    } else if (pipeCount >= 10) {
+        reinitializeVars(pipeCount);
+    }
+
+
     showScore();
 
 
@@ -47,7 +58,9 @@ function playGame() {
 		}
 
 		if (pipes[i].passes(bird)) {
-			score += 5;
+            score += 5;
+            pipeCount += 1;
+            console.log(pipeCount);
 		} else if (pipes[i].hits(bird)) {
 			lives -= 1;
 			bird = new Bird();
@@ -130,4 +143,5 @@ function reset() {
 function reinitializeVars() {
 	lives = 3;
 	score = 0;
+    pipeCount = 0;
 }
