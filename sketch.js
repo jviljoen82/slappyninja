@@ -5,24 +5,26 @@ let score = 0;
 let leaders = [];
 let play = false;
 let pipeCount = 0;
+let bg;
+let ninja;
 
 console.log(lives);
 
 function setup() {
   	createCanvas(1000, 600);
-    bg = loadImage('trees.jpg');
     bg2 = loadImage('trees2.jpg')
-    ninja = loadImage('ninja.png');
-	pipes = [];
-	bird = new Bird();
+    bg = loadImage('media/backdrops/trees.jpg');
+    ninja = loadImage('media/ninja/ninja.png');
+	  pipes = [];
+	  bird = new Bird();
 }
 
 function draw() {
-	if (!play) {
-		showTopScore();
-	} else {
-		playGame();
-	}
+    if (!play) {
+      showTopScore();
+    } else {
+      playGame();
+    }
 }
 
 function playGame() {
@@ -34,10 +36,6 @@ function playGame() {
     } else {
         pipeCount = 0;
     }
-
-    showScore();
-
-
 
 	if (frameCount === 1) {
 		pipes.push(new Pipe());
@@ -51,7 +49,7 @@ function playGame() {
 		pipes[i].show();
 		pipes[i].update();
 		pipes.speed = 5;
-
+		showScore();
 
 		if (pipes[i].offscreen()) {
 			pipes.splice(i, 1);
@@ -73,7 +71,7 @@ function playGame() {
 				if (answer.toUpperCase().trim() === 'YES') {
 					reset();
 				} else {
-					let playerName = prompt('Thanks for Playing! Enter yout name: ');
+					let playerName = prompt('Thanks for Playing! Enter your name: ');
 					leaders.push(playerName);
 					leaders.push(score);
 					console.log(leaders);
@@ -116,8 +114,8 @@ function showTopScore() {
 	let dislpayLeaders = leaders[0] + ": " + leaders[1];
 	let step = frameCount % 50;
 
-	if (leaders.length == 0) {
-		dislpayLeaders = "SLAPPY*NINJA Instructions:\n Keep your Ninja in the air by hitting <spacebar>. \n If you want to be a noob and lose a life, fall to the ground or hit a tree. \n (This will bring much dishonour to George of the Jungle clan).\n\nCan you make it onto the board?";
+	if (leaders.length === 0) {
+		dislpayLeaders = 'SLAPPY*NINJA Instructions:\n Keep your Ninja in the air by hitting <spacebar>. \n If you want to be a noob and lose a life, fall to the ground or hit a tree. \n (This will bring much dishonour to George of the Jungle clan).\n\nCan you make it onto the board?';
 	}
 	// applyMatrix(1, 0, 0, 1, 40 + step, 50);
 	background(35);
