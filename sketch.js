@@ -17,7 +17,7 @@ function setup() {
 
 function draw() {
   background(0);
-  
+
 
   if (frameCount === 1) {
     pipes.push(new Pipe());
@@ -31,6 +31,8 @@ function draw() {
     pipes[i].show();
     pipes[i].update();
     pipes.speed = 5;
+
+    showScore();
 
     if (pipes[i].offscreen()) {
         pipes.splice(i, 1);
@@ -55,12 +57,12 @@ function draw() {
           console.log(leaders);
           reinitializeVars();
           noLoop();
+          showTopScore();
         }
       }
     }
   }
 
-  showScore();
   bird.show();
   bird.update();
 }
@@ -87,6 +89,13 @@ function showScore() {
 }
 
 function showTopScore() {
+    leaders = leaders[0] + ": " + leaders[1];
+    background(0);
+    fill('#1199FF');
+    textAlign(CENTER, CENTER);
+    textStyle(BOLD);
+    text(leaders, 10, 10, 70, 80);
+    textSize(20);
   // TODO: build top score page
 }
 
