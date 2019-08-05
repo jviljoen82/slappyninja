@@ -23,6 +23,7 @@ function draw() {
 
 function playGame() {
 	background(0);
+    showScore();
 
 
 	if (frameCount === 1) {
@@ -38,7 +39,6 @@ function playGame() {
 		pipes[i].update();
 		pipes.speed = 5;
 
-		showScore();
 
 		if (pipes[i].offscreen()) {
 			pipes.splice(i, 1);
