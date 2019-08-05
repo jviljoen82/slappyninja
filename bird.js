@@ -6,11 +6,11 @@ class Bird {
 		this.lift = -12;
 		this.velocity = 0;
 
-		this.show = () => {
-			fill(255, 0, 0);
-			//ellipse(this.x, this.y, 32, 32);
-			image(ninja, this.x, this.y, 70, 70);
-		};
+    this.show = () => {
+      fill(0);
+      image(ninja, 28, this.y - 40, 70, 70);
+      ellipse(this.x, this.y, 32, 32);
+    };
 
 		this.up = () => {
 			this.velocity += this.lift;
