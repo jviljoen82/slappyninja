@@ -9,7 +9,7 @@ class Bird {
 		this.show = () => {
 			fill(255, 0, 0);
 			//ellipse(this.x, this.y, 32, 32);
-			image(ninja, this.x, this.y, 70, 70)
+			image(ninja, this.x, this.y, 70, 70);
 		};
 
 		this.up = () => {
