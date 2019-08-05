@@ -12,7 +12,7 @@ function setup() {
   	createCanvas(1000, 600);
     bg = loadImage('trees.jpg');
     bg2 = loadImage('trees2.jpg')
-    ninja = loadImage("ninja.png");
+    ninja = loadImage('ninja.png');
 	pipes = [];
 	bird = new Bird();
 }
@@ -26,17 +26,17 @@ function draw() {
 }
 
 function playGame() {
-    // TODO: reset loop and change back to bg for now. 
+    // TODO: reset loop and change back to bg for now.
     if (pipeCount <= 5) {
         background(bg);
-    } else if (pipeCount >= 6) {
+    } else if (pipeCount >= 6 && pipeCount <= 11) {
         background(bg2);
-    } else if (pipeCount >= 10) {
-        reinitializeVars(pipeCount);
+    } else {
+        pipeCount = 0;
     }
 
-
     showScore();
+
 
 
 	if (frameCount === 1) {
