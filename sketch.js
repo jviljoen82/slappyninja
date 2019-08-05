@@ -100,12 +100,13 @@ function showTopScore() {
 	let dislpayLeaders = leaders[0] + ": " + leaders[1];
 	background(0);
 	fill('#1199FF');
-	textAlign(CENTER, CENTER);
+	textAlign(CENTER, TOP);
 	textStyle(BOLD);
-	text(dislpayLeaders, 10, 10, 70, 80);
+	text(dislpayLeaders, 20, 20, 990, 560);
 	textSize(20);
-	fill('#880044');
-	text('press "P" to play', 10, 10, 70, 80);
+	fill('#881144');
+	textAlign(CENTER, TOP);
+	text('press "P" to play', 20, 570, 990, 590);
 	// TODO: build top score page
 }
 
