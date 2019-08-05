@@ -10,6 +10,7 @@ console.log(lives);
 function setup() {
   	createCanvas(1000, 600);
     bg = loadImage('trees.jpg');
+    ninja = loadImage("ninja.png");
 	pipes = [];
 	bird = new Bird();
 }
