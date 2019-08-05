@@ -83,6 +83,10 @@ function showScore() {
   textSize(15);
 }
 
+function showTopScore() {
+  // TODO: build top score page
+}
+
 function reset() {
   setup();
   console.log(pipes);
