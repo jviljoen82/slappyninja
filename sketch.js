@@ -107,15 +107,16 @@ function showTopScore() {
 		dislpayLeaders = "SlappyNinja Instructions:\n Keep your Ninja in the air by hitting <spacebar>. \n fall off the screen and lose a life. Hit a Tree..Lose a Life (however George of the Jungle would be proud).\n\nCan you make it onto the board?";
 	}
 	// applyMatrix(1, 0, 0, 1, 40 + step, 50);
-	background(0);
+	background(35);
+    image(ninja, 250, 30, width / 2, height);
 	fill('#1199FF');
 	textAlign(CENTER, TOP);
 	textStyle(BOLD);
 	text(dislpayLeaders, 20, 20, 990, 560);
 	textSize(20);
-	fill('#881144');
+	fill('#e60000');
 	textAlign(CENTER, TOP);
-	text('press "P" to play', 20, 570, 990, 590);
+	text('Press "P" to play SLAPPY*NINJA!', 20, 570, 990, 590);
 		// TODO: build top score page
 }
 
