@@ -104,7 +104,7 @@ function showTopScore() {
 	let step = frameCount % 50;
 
 	if (leaders.length == 0) {
-		dislpayLeaders = "SlappyNinja Instructions:\n Keep your Ninja in the air by hitting <spacebar>. \n fall off the screen and lose a life. Hit a Tree..Lose a Life (however George of the Jungle would be proud).\n\nCan you make it onto the board?";
+		dislpayLeaders = "SLAPPY*NINJA Instructions:\n Keep your Ninja in the air by hitting <spacebar>. \n fall off the screen and lose a life. Hit a Tree..Lose a Life (however George of the Jungle would be proud).\n\nCan you make it onto the board?";
 	}
 	// applyMatrix(1, 0, 0, 1, 40 + step, 50);
 	background(35);
