@@ -94,8 +94,8 @@ function showTopScore() {
     fill('#1199FF');
     textAlign(CENTER, CENTER);
     textStyle(BOLD);
-    text(leaders, 30, 20, 55, 55);
-    textSize(15);
+    text(leaders, 10, 10, 70, 80);
+    textSize(20);
   // TODO: build top score page
 }
 
