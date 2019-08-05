@@ -97,8 +97,11 @@ function showScore() {
 }
 
 function showTopScore() {
-	let dislpayLeaders = leaders[0] + ": " + leaders[1];
-	background(0);
+  let dislpayLeaders = leaders[0] + ": " + leaders[1];
+  let step = frameCount % 50;
+
+  applyMatrix(1, 0, 0, 1, 40 + step, 50);
+  background(0);
 	fill('#1199FF');
 	textAlign(CENTER, TOP);
 	textStyle(BOLD);
