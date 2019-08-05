@@ -7,25 +7,25 @@ class Bird {
 		this.velocity = 0;
 
 		this.show = () => {
-		fill(255, 0, 0);
-		ellipse(this.x, this.y, 32, 32);
+			fill(255, 0, 0);
+			ellipse(this.x, this.y, 32, 32);
 		};
 
 		this.up = () => {
-		this.velocity += this.lift;
+			this.velocity += this.lift;
 		};
 		
 		this.update = () => {
-		this.velocity += this.gravity;
-		this.y += this.velocity;
-		if (this.y > height) {
-			this.y = height;
-			this.velocity = 0;
-		}
-		if (this.y < 0) {
-			this.y = 0;
-			this.velocity = 0;
-		}
+			this.velocity += this.gravity;
+			this.y += this.velocity;
+			if (this.y > height) {
+				this.y = height;
+				this.velocity = 0;
+			}
+			if (this.y < 0) {
+				this.y = 0;
+				this.velocity = 0;
+			}
 		};
 	}
 }

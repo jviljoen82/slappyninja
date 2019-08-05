@@ -45,27 +45,27 @@ function playGame() {
 		}
 
 		if (pipes[i].passes(bird)) {
-		score += 5;
+			score += 5;
 		} else if (pipes[i].hits(bird)) {
-		lives -= 1;
-		bird = new Bird();
-		if (lives > 1) {
-			alert('You Lose 1 life!  You have ' + lives + ' lives left');
-		} else if (lives === 1) {
-			alert('You Lose 1 life!  You have ' + lives + ' life left');
-		} else {
-			let answer = prompt('Game Over! Your score is ' + score + '! Do you want to play again?');
-			if (answer.toUpperCase().trim() === 'YES') {
-				reset();
+			lives -= 1;
+			bird = new Bird();
+			if (lives > 1) {
+				alert('You Lose 1 life!  You have ' + lives + ' lives left');
+			} else if (lives === 1) {
+				alert('You Lose 1 life!  You have ' + lives + ' life left');
 			} else {
-				let playerName = prompt('Thanks for Playing! Enter yout name: ');
-				leaders.push(playerName);
-				leaders.push(score);
-				console.log(leaders);
-				reinitializeVars();
-				play = false;
+				let answer = prompt('Game Over! Your score is ' + score + '! Do you want to play again?');
+				if (answer.toUpperCase().trim() === 'YES') {
+					reset();
+				} else {
+					let playerName = prompt('Thanks for Playing! Enter yout name: ');
+					leaders.push(playerName);
+					leaders.push(score);
+					console.log(leaders);
+					reinitializeVars();
+					play = false;
+				}
 			}
-		}
 		}
 	}
 
