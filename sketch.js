@@ -3,6 +3,7 @@ let pipes = [];
 let lives = 3;
 let score = 0;
 let leaders = [];
+let play = flase;
 
 console.log(lives);
 
@@ -10,12 +11,17 @@ function setup() {
   createCanvas(1000, 600);
   pipes = [];
   bird = new Bird();
-
-  console.log("new pipe", pipes);
-  alert('Click OK when you are ready to play');
 }
 
 function draw() {
+  if (!play) {
+    showTopScore();
+  } else {
+    playGame();
+  }
+}
+
+function playGame() {
   background(0);
 
 
@@ -56,8 +62,7 @@ function draw() {
           leaders.push(score);
           console.log(leaders);
           reinitializeVars();
-          noLoop();
-          showTopScore();
+          play = false;
         }
       }
     }
@@ -70,6 +75,8 @@ function draw() {
 function keyPressed() {
   if (key === ' ') {
     bird.up();
+  } else if (key.toUpperCase() === 'P') {
+    play = true;
   } else if (keyCode === LEFT_ARROW) {
     pipes.speed = 1;
 
@@ -89,13 +96,15 @@ function showScore() {
 }
 
 function showTopScore() {
-    leaders = leaders[0] + ": " + leaders[1];
-    background(0);
-    fill('#1199FF');
-    textAlign(CENTER, CENTER);
-    textStyle(BOLD);
-    text(leaders, 10, 10, 70, 80);
-    textSize(20);
+  leaders = leaders[0] + ": " + leaders[1];
+  background(0);
+  fill('#1199FF');
+  textAlign(CENTER, CENTER);
+  textStyle(BOLD);
+  text(leaders, 10, 10, 70, 80);
+  textSize(20);
+  fill('#880044');
+  text('press "P" to play', 10, 10, 70, 80);
   // TODO: build top score page
 }
 
