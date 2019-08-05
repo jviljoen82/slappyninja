@@ -98,6 +98,9 @@ function showScore() {
 
 function showTopScore() {
   let dislpayLeaders = leaders[0] + ": " + leaders[1];
+  let step = frameCount % 50;
+
+  applyMatrix(1, 0, 0, 1, 40 + step, 50);
   background(0);
   fill('#1199FF');
   textAlign(CENTER, CENTER);
@@ -105,7 +108,7 @@ function showTopScore() {
   text(dislpayLeaders, 10, 10, 70, 80);
   textSize(20);
   fill('#880044');
-  text('press "P" to play', 10, 10, 70, 80);
+  text('press "P" to play', 100, 100, 50, 50);
   // TODO: build top score page
 }
 
