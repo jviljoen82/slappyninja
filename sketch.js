@@ -106,7 +106,7 @@ function showTopScore() {
 	let step = frameCount % 50;
 
 	if (leaders.length === 0) {
-		dislpayLeaders = 'SLAPPY*NINJA Instructions:\n Keep your Ninja in the air by hitting \<spacebar\>. \n If you want to be a noob and lose a life, fall to the ground or hit a tree. \n (This will bring much dishonour to George of the Jungle clan).\n\nCan you make it onto the board?';
+		dislpayLeaders = 'SLAPPY*NINJA Instructions:\n Keep your Ninja in the air by hitting <spacebar>. \n If you want to be a noob and lose a life, fall to the ground or hit a tree. \n (This will bring much dishonour to George of the Jungle clan).\n\nCan you make it onto the board?';
 	}
 	// applyMatrix(1, 0, 0, 1, 40 + step, 50);
 	background(35);
