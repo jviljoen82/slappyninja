@@ -3,7 +3,7 @@ let pipes = [];
 let lives = 3;
 let score = 0;
 let leaders = [];
-let play = flase;
+let play = false;
 
 console.log(lives);
 
@@ -58,7 +58,8 @@ function playGame() {
         if (answer.toUpperCase().trim() === 'YES') {
           reset();
         } else {
-          leaders.push(prompt('Thanks for Playing! Enter yout name: '));
+          let playerName = prompt('Thanks for Playing! Enter yout name: ');
+          leaders.push(playerName);
           leaders.push(score);
           console.log(leaders);
           reinitializeVars();
@@ -96,12 +97,12 @@ function showScore() {
 }
 
 function showTopScore() {
-  leaders = leaders[0] + ": " + leaders[1];
+  let dislpayLeaders = leaders[0] + ": " + leaders[1];
   background(0);
   fill('#1199FF');
   textAlign(CENTER, CENTER);
   textStyle(BOLD);
-  text(leaders, 10, 10, 70, 80);
+  text(dislpayLeaders, 10, 10, 70, 80);
   textSize(20);
   fill('#880044');
   text('press "P" to play', 10, 10, 70, 80);
