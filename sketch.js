@@ -3,6 +3,7 @@ let pipes = [];
 let lives = 3;
 let score = 0;
 let leaders = [];
+let newTopScore = new TopScoreItem();
 let play = false;
 let pipeCount = 0;
 
@@ -66,8 +67,9 @@ function playGame() {
 					reset();
 				} else {
 					let playerName = prompt('Thanks for Playing! Enter your name: ');
-					leaders.push(playerName);
-					leaders.push(score);
+					newTopScore.name = playerName;
+					newTopScore.score = score;
+					leaders.push(newTopScore);
 					console.log(leaders);
 					reinitializeVars();
 					play = false;
@@ -104,7 +106,7 @@ function showScore() {
 }
 
 function showTopScore() {
-	let dislpayLeaders = leaders[0] + ": " + leaders[1];
+	let dislpayLeaders = leaders[0].name + ": " + leaders[0].score;
 	let step = frameCount % 50;
 
 	if (leaders.length === 0) {
