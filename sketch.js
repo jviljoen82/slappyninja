@@ -1,20 +1,17 @@
-let bg;
 let bird;
 let leaders = [];
 let lives = 3;
 let pipeCount = 0;
 let pipes = [];
 let play = false;
-let ninja;
 let score = 0;
+let newTopScore = new TopScoreItem();
+let pipeCount = 0;
 
 console.log(lives);
 
 function setup() {
   	createCanvas(1000, 600);
-    bg2 = loadImage('media/backdrops/trees2.jpg')
-    bg = loadImage('media/backdrops/trees.jpg');
-    ninja = loadImage('media/ninja/ninja.png');
   	pipes = [];
   	bird = new Bird();
 }
@@ -45,12 +42,12 @@ function playGame() {
 		pipes.push(new Pipe());
 	}
 
-    showScore();
+    
 
 	for (let i = pipes.length - 1; i >= 0; i--) {
 		pipes[i].show();
 		pipes[i].update();
-		pipes.speed = 5;
+    showScore();
 
 		if (pipes[i].offscreen()) {
 			pipes.splice(i, 1);
@@ -77,8 +74,9 @@ function playGame() {
 					reset();
 				} else {
 					let playerName = prompt('Thanks for Playing! Enter your name: ');
-					leaders.push(playerName);
-					leaders.push(score);
+					newTopScore.name = playerName;
+					newTopScore.score = score;
+					leaders.push(newTopScore);
 					console.log(leaders);
 					reinitializeVars();
 					play = false;
@@ -99,7 +97,6 @@ function keyPressed() {
 		play = true;
 	} else if (keyCode === LEFT_ARROW) {
 		pipes.speed = 1;
-
 	} else if (keyCode === RIGHT_ARROW) {
 		pipes.speed = 25;
 		// TODO: add 'slap' code here
@@ -116,24 +113,26 @@ function showScore() {
 }
 
 function showTopScore() {
-	let dislpayLeaders = leaders[0] + ": " + leaders[1];
-	let step = frameCount % 50;
-
-	if (leaders.length === 0) {
-		dislpayLeaders = 'SLAPPY*NINJA Instructions:\n Keep your Ninja in the air by hitting <spacebar>. \n If you want to be a noob and lose a life, fall to the ground or hit a tree. \n (This will bring much dishonour to George of the Jungle clan).\n\nCan you make it onto the board?';
-	}
-	// applyMatrix(1, 0, 0, 1, 40 + step, 50);
 	background(35);
-    image(ninja, 250, 30, width / 2, height);
+	image(ninja, 250, 30, width / 2, height);
 	fill('#1199FF');
 	textAlign(CENTER, TOP);
 	textStyle(BOLD);
-	text(dislpayLeaders, 20, 20, 990, 560);
 	textSize(20);
+	let displayLeaders;
+
+	if (leaders.length === 0) {
+		displayLeaders = 'SLAPPY*NINJA Instructions:\n Keep your Ninja in the air by hitting <spacebar>. \n If you want to be a noob and lose a life, fall to the ground or hit a tree. \n (This will bring much dishonour to George of the Jungle clan).\n\nCan you make it onto the board?';
+		text(displayLeaders, 20, 20, 990, 560);
+	}
+
+	for(let leadScore in leaders) {
+		displayLeaders = leadScore.name + ": " + leadScore.score;
+		text(displayLeaders, 20, 20, 990, 560);
+	}
 	fill('#e60000');
 	textAlign(CENTER, TOP);
 	text('Press "P" to play SLAPPY*NINJA!', 20, 570, 990, 590);
-		// TODO: build top score page
 }
 
 function reset() {
