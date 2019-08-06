@@ -6,10 +6,12 @@ class TopScoreItem {
 }
 
 let bird;
-let pipes = [];
-let lives = 3;
-let score = 0;
 let leaders = [];
+let lives = 3;
+let pipeCount = 0;
+let pipes = [];
+let play = false;
+let score = 0;
 let newTopScore = new TopScoreItem();
 let pipeCount = 0;
 let bg;
@@ -54,10 +56,12 @@ function playGame() {
 		pipes.push(new Pipe());
 	}
 
+    
+
 	for (let i = pipes.length - 1; i >= 0; i--) {
 		pipes[i].show();
 		pipes[i].update();
-		showScore();
+    showScore();
 
 		if (pipes[i].offscreen()) {
 			pipes.splice(i, 1);
@@ -66,7 +70,11 @@ function playGame() {
 		if (pipes[i].passes(bird)) {
             score += 5;
             pipeCount += 1;
-            console.log(pipeCount);
+            let r = /[0-9][0][0]/;
+
+            if (r.test(score)) {
+                lives +=1;
+            }
 		} else if (pipes[i].hits(bird)) {
 			lives -= 1;
 			bird = new Bird();
