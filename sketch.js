@@ -5,16 +5,11 @@ let score = 0;
 let leaders = [];
 let play = false;
 let pipeCount = 0;
-let bg;
-let ninja;
 
 console.log(lives);
 
 function setup() {
   	createCanvas(1000, 600);
-    bg2 = loadImage('media/backdrops/trees2.jpg')
-    bg = loadImage('media/backdrops/trees.jpg');
-    ninja = loadImage('media/ninja/ninja.png');
   	pipes = [];
   	bird = new Bird();
 }
@@ -48,7 +43,6 @@ function playGame() {
 	for (let i = pipes.length - 1; i >= 0; i--) {
 		pipes[i].show();
 		pipes[i].update();
-		pipes.speed = 5;
 		showScore();
 
 		if (pipes[i].offscreen()) {
@@ -94,7 +88,6 @@ function keyPressed() {
 		play = true;
 	} else if (keyCode === LEFT_ARROW) {
 		pipes.speed = 1;
-
 	} else if (keyCode === RIGHT_ARROW) {
 		pipes.speed = 25;
 		// TODO: add 'slap' code here
