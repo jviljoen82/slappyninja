@@ -8,9 +8,7 @@ class TopScoreItem {
 let bird;
 let leaders = [];
 let lives = 3;
-let pipeCount = 0;
 let pipes = [];
-let play = false;
 let score = 0;
 let newTopScore = new TopScoreItem();
 let pipeCount = 0;
