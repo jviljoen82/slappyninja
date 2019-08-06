@@ -132,7 +132,7 @@ function showTopScore() {
 	}
 
 	for(let leadScore in leaders) {
-		displayLeaders = leadScore.name + ": " + leadScore.score;
+		displayLeaders = leaders[leadScore].name + ": " + leaders[leadScore].score;
 		text(displayLeaders, 20, 20, 990, 560);
 	}
 	fill('#e60000');
