@@ -54,10 +54,11 @@ function playGame() {
 		pipes.push(new Pipe());
 	}
 
+	showScore();
+
 	for (let i = pipes.length - 1; i >= 0; i--) {
 		pipes[i].show();
 		pipes[i].update();
-    showScore();
 
 		if (pipes[i].offscreen()) {
 			pipes.splice(i, 1);
