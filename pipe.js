@@ -29,7 +29,7 @@ class Pipe {
     };
 
     this.show = () => {
-		fill(0, 128, 0);
+		fill('#007700');
 		if (this.highlight) {
 			fill(255, 0, 0);
 			this.highlight = false;
