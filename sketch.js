@@ -54,8 +54,6 @@ function playGame() {
 		pipes.push(new Pipe());
 	}
 
-    
-
 	for (let i = pipes.length - 1; i >= 0; i--) {
 		pipes[i].show();
 		pipes[i].update();
@@ -131,6 +129,7 @@ function showTopScore() {
 	textStyle(BOLD);
 	textSize(20);
 	let displayLeaders;
+
 
 	if (leaders.length === 0) {
 		displayLeaders = 'SLAPPY*NINJA Instructions:\n Keep your Ninja in the air by hitting <spacebar>. \n If you want to be a noob and lose a life, fall to the ground or hit a tree. \n (This will bring much dishonour to George of the Jungle clan).\n\nCan you make it onto the board?';
