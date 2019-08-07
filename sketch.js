@@ -1,9 +1,21 @@
-let bg;
+class TopScoreItem {
+	constructor (){
+		let name;
+		let score;
+	}
+}
+
 let bird;
 let leaders = [];
+let lives = 3;
+let pipes = [];
+let score = 0;
 let newTopScore = new TopScoreItem();
-let play = false;
 let pipeCount = 0;
+let bg;
+let bg2;
+let ninja;
+let play = false;
 
 console.log(lives);
 
@@ -11,6 +23,9 @@ function setup() {
   	createCanvas(1000, 600);
   	pipes = [];
   	bird = new Bird();
+  	bg = loadImage('media/backdrops/trees.jpg');
+  	bg2 = loadImage('media/backdrops/trees2.jpg');
+  	ninja = loadImage('media/ninja/ninja.png');
 }
 
 function draw() {
@@ -39,12 +54,10 @@ function playGame() {
 		pipes.push(new Pipe());
 	}
 
-    showScore();
-
 	for (let i = pipes.length - 1; i >= 0; i--) {
 		pipes[i].show();
 		pipes[i].update();
-		pipes.speed = 5;
+    showScore();
 
 		if (pipes[i].offscreen()) {
 			pipes.splice(i, 1);
@@ -70,8 +83,7 @@ function playGame() {
 				if (answer.toUpperCase().trim() === 'YES') {
 					reset();
 				} else {
-					let playerName = prompt('Thanks for Playing! Enter your name: ');
-					newTopScore.name = playerName;
+					newTopScore.name = prompt('Thanks for Playing! Enter your name: ');
 					newTopScore.score = score;
 					leaders.push(newTopScore);
 					console.log(leaders);
@@ -125,7 +137,7 @@ function showTopScore() {
 	}
 
 	for(let leadScore in leaders) {
-		displayLeaders = leadScore.name + ": " + leadScore.score;
+		displayLeaders = leaders[leadScore].name + ": " + leaders[leadScore].score;
 		text(displayLeaders, 20, 20, 990, 560);
 	}
 	fill('#e60000');
