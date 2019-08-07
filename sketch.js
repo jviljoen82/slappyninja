@@ -54,17 +54,18 @@ function playGame() {
 		pipes.push(new Pipe());
 	}
 
+	showScore();
 	for (let i = pipes.length - 1; i >= 0; i--) {
 		pipes[i].show();
 		pipes[i].update();
-    showScore();
+		pipes[i].speed = 5;
 
 		if (pipes[i].offscreen()) {
 			pipes.splice(i, 1);
 		}
 
 		if (pipes[i].passes(bird)) {
-            score += 5;
+			score += 5;
             pipeCount += 1;
             let r = /[0-9][0][0]/;
 
@@ -105,9 +106,13 @@ function keyPressed() {
 		reset();
 		play = true;
 	} else if (keyCode === LEFT_ARROW) {
-		pipes.speed = 1;
+		for (let i = pipes.length - 1; i >= 0; i--) {
+			pipes[i].speed = 1;
+		}
 	} else if (keyCode === RIGHT_ARROW) {
-		pipes.speed = 25;
+		for (let i = pipes.length - 1; i >= 0; i--) {
+			pipes[i].speed = 25;
+		}
 		// TODO: add 'slap' code here
 	}
 	return false;
