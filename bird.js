@@ -6,9 +6,9 @@ class Bird {
 		this.lift = -12;
 		this.velocity = 0;
 
-		this.show = () => {
+		this.show = (sprite) => {
 			fill(0);
-			image(ninja, 28, this.y - 40, 70, 70);
+			image(sprite, 28, this.y - 40, 70, 70);
 			ellipse(this.x, this.y, 32, 32);
 		};
 

@@ -16,6 +16,7 @@ let bg;
 let bg2;
 let ninja;
 let play = false;
+let dashSpeed = 50;
 
 console.log(lives);
 
@@ -58,7 +59,6 @@ function playGame() {
 	for (let i = pipes.length - 1; i >= 0; i--) {
 		pipes[i].show();
 		pipes[i].update();
-		pipes[i].speed = 5;
 
 		if (pipes[i].offscreen()) {
 			pipes.splice(i, 1);
@@ -94,8 +94,11 @@ function playGame() {
 			}
 		}
 	}
+	for (let i = pipes.length - 1; i >= 0; i--) {
+		pipes[i].speed = 5;
+	}
 
-	bird.show();
+	bird.show(ninja);
 	bird.update();
 }
 
@@ -108,10 +111,14 @@ function keyPressed() {
 	} else if (keyCode === LEFT_ARROW) {
 		for (let i = pipes.length - 1; i >= 0; i--) {
 			pipes[i].speed = 1;
+			pipes[i].update();
+			pipes[i].show();
 		}
 	} else if (keyCode === RIGHT_ARROW) {
 		for (let i = pipes.length - 1; i >= 0; i--) {
-			pipes[i].speed = 25;
+			pipes[i].speed = dashSpeed;
+			pipes[i].update();
+			pipes[i].show();
 		}
 		// TODO: add 'slap' code here
 	}
