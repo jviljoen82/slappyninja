@@ -56,6 +56,7 @@ function playGame() {
 	}
 
 	showScore();
+
 	for (let i = pipes.length - 1; i >= 0; i--) {
 		pipes[i].show();
 		pipes[i].update();
