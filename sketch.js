@@ -8,6 +8,7 @@ class TopScoreItem {
 let bird;
 let leaders = [];
 let lives = 3;
+let pickup;
 let pipes = [];
 let score = 0;
 let newTopScore = new TopScoreItem();
@@ -27,6 +28,7 @@ function setup() {
   	bg = loadImage('media/backdrops/trees.jpg');
   	bg2 = loadImage('media/backdrops/trees2.jpg');
   	ninja = loadImage('media/ninja/ninja.png');
+	pickup = [];
 }
 
 function draw() {
@@ -55,6 +57,25 @@ function playGame() {
 		pipes.push(new Pipe());
 	}
 
+	if (frameCount % 500 === 0) {
+		pickup.push(new Pickup());
+	}
+
+	for (let i = pickup.length - 1; i >= 0; i--) {
+		pickup[i].show();
+		pickup[i].update();
+
+		if (pickup[i].offscreen()) {
+			pickup.splice(i, 1);
+		}
+		// TODO: double check hit method
+		if (pickup[i].hits(bird)) {
+			lives += 1;
+			alert('You gained a life! You now have ' + lives);
+		}
+	}
+
+
 	showScore();
 
 	for (let i = pipes.length - 1; i >= 0; i--) {
@@ -73,6 +94,7 @@ function playGame() {
             if (r.test(score)) {
                 lives +=1;
             }
+
 		} else if (pipes[i].hits(bird)) {
 			lives -= 1;
 			bird = new Bird();
