@@ -5,18 +5,17 @@ class Pickup {
 		this.speed = 5;
 
 		this.passes = (pipe) => {
-		if (pipe.y > this.top && pipe.y < height - this.bottom) {
-			if (pipe.x === this.x + (this.w / 2)) {
-				return true;
+			if (pipe.y > this.top && pipe.y < height - this.bottom) {
+				if (pipe.x === this.x + (this.w / 2)) {
+					return true;
+				}
 			}
-		}
 	}
 
 	//// TODO: double check hit method
 
 		this.hits = (bird) => {
-			if (bird.x > this.x && bird.x < this.x + this.w) {
-				this.highlight = true;
+			if (bird.x > this.x && bird.x < this.x + this.y) {
 				return true;
 			}
 			return false;
@@ -33,7 +32,7 @@ class Pickup {
 	    };
 
 	    this.offscreen = () => {
-			return this.x < -this.w;
+			return this.x < -this.y;
 	    };
 	}
 }

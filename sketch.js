@@ -19,8 +19,6 @@ let ninja;
 let play = false;
 let dashSpeed = 50;
 
-console.log(lives);
-
 function setup() {
   	createCanvas(1000, 600);
   	pipes = [];
@@ -68,10 +66,11 @@ function playGame() {
 		if (pickup[i].offscreen()) {
 			pickup.splice(i, 1);
 		}
-		// TODO: double check hit method
+
 		if (pickup[i].hits(bird)) {
 			lives += 1;
-			alert('You gained a life! You now have ' + lives);
+			alert('You gained a life! You now have ' + lives + ' lives left.');
+			pickup.splice(i, 1);
 		}
 	}
 
